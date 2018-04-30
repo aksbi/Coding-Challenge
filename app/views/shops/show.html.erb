@@ -1,0 +1,13 @@
+
+<div class="container text-center">
+<h2><%= @shop.title %></h2>
+<p><%= image_tag @shop.image.url() %> </p>
+<% if @shop.distance == 1 %>
+<p>Distance: <%= @shop.distance %> Mile</p>
+<% else %>
+<p>Distance: <%= @shop.distance %> Miles</p>
+<% end %>
+<%= link_to "Back", root_path, class:"btn btn-warning" %>
+<%= link_to "Edit", edit_shop_path(@shop), class:"btn btn-info" %>
+<%= link_to "Delete", shop_path(@shop), method: :delete, class:"btn btn-danger" %>
+</div>

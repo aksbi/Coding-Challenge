@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HfShops</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+
+
+
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header" style="font-weight: bolder;">
+          <%= link_to "Coding Challenge", root_path, class: "navbar-brand"%>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          
+          <% if current_user.present? %>
+          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+          <li> <%= link_to "Sign Up", new_user_registration_path %> </li>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <% end %>
+        </ul>
+        <% if user_signed_in? %>
+          <%= link_to "New Shop", new_shop_path, class: "navbar-text navbar-link " %>
+          <%= link_to "Nearby Shops", shops_path, class: "navbar-text navbar-link " %>
+          <%= link_to "My prefered Shops", shops_path, class: "navbar-text navbar-link " %>
+        <% end %>
+      </div>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>

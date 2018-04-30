@@ -1,0 +1,31 @@
+<% if user_signed_in? %>
+
+
+			
+		<div class="container">
+			<% @shops.each do |shop| %>
+
+			<div class="col-md-3">
+			<div class="text-center" style="height:400px;">
+			<h2><%= link_to shop.title, shop %></h2>
+			<p><%= image_tag shop.image.url() %> </p>
+			
+			<% if shop.distance == 1 %>
+			<p>Distance: <%= shop.distance %> Mile</p>
+			<% else %>
+			<p>Distance: <%= shop.distance %> Miles</p>
+			<% end %>
+
+			<%= link_to "Disike", shops_path , class:"btn btn-danger" %>
+			<%= link_to "Like", shops_path , class:"btn btn-success" %>
+			</div>
+			</div>
+			<% end %>
+		</div>			
+
+
+		
+	
+<% else %>
+	<%= render 'layouts/static_challenge_page' %>
+<% end %>

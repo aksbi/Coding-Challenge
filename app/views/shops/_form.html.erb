@@ -1,0 +1,9 @@
+<%= simple_form_for @shop, html: { multipart: true } do |f| %>
+	<%= f.input :title, label: "Shop name" %>
+	<%= f.input :distance %>
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+	<br>
+	<%= f.button :submit %>
+<% end %>
+
